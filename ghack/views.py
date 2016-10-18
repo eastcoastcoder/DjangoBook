@@ -1,3 +1,8 @@
+from django.shortcuts import render
+
+from django.template.loader import get_template
+from django.template import Context
+
 from django.http import Http404, HttpResponse  
 import datetime
 
@@ -7,8 +12,13 @@ def hello(request):
     
 def current_datetime(request):
     now = datetime.datetime.now()
-    html = "It is now %s." % now
-    return HttpResponse(html)
+    #html = "<html><body>It is now %s.</body></html>" % now
+    '''
+    t = get_template('dateapp/current_datetime.html')
+    #html = t.render(Context({'current_date': now}))
+    #return HttpResponse(html)
+    '''
+    return render(request, 'dateapp/current_datetime.html', {'current_date': now})
     
 def hours_ahead(request, offset):
     try:
@@ -16,5 +26,8 @@ def hours_ahead(request, offset):
     except ValueError:
         raise Http404()
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
+    '''
     html = "In %s hour(s), it will be  %s.  " % (offset, dt)
     return HttpResponse(html)
+    '''
+    return render(request, 'dateapp/hours_ahead.html', {'hour_offset': offset, 'next_time': dt})

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 """
 Django settings for ghack project.
 
@@ -56,8 +58,8 @@ ROOT_URLCONF = 'ghack.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #list of directories where the engine should look for template source files, in search order
+        'APP_DIRS': True, #If True, DjangoTemplates looks for “templates” subdir in each of the INSTALLED_APPS
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
