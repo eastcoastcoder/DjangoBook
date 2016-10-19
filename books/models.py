@@ -14,6 +14,7 @@ class Publisher(models.Model):
         return self.name
         
     #Define Default Ordering for SELECT
+    #Or define ordering in admin.py
     class Meta:
         ordering = ['name']
 
