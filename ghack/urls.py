@@ -16,13 +16,22 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from ghack.views import hello, current_datetime, hours_ahead #Be sure to import any views!
+#Be sure to import any views!
+from ghack.views import hello, current_datetime, hours_ahead, contact
+from books import views
 
 #url(regex, viewfunction) See: http://djangobook.com/views-urlconfs/
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/$', hello), #https://ghack-ethanx94.c9users.io/<regex>
     url(r'^time/$', current_datetime), 
+    url(r'^contact/$', contact),
+    
+    url(r'^meta/$', views.display_meta), 
+    url(r'^metaPath/$', views.current_url_request_path), 
+    url(r'^metaGET/$', views.ua_browser), 
+    url(r'^search-form/$', views.search_form),
+    url(r'^search/$', views.search),
     
     #\d{1,2} matches one or two digits (99hr max)
     #parentheses allow passing data in like a function

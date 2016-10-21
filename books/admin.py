@@ -14,7 +14,7 @@ class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ('authors',) #Editing Entry, Many-To-Many
     #raw_id_fields = ('publisher',) #Display RawID Instead of Dropdown
 
-#admin.site.register(ModelClass, ModelAdminClass)
+# Format: admin.site.register(ModelClass, ModelAdminClass)
 admin.site.register(Publisher)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
